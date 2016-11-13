@@ -6,7 +6,7 @@
 /*   By: vroussea <vroussea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/06/07 15:40:59 by vroussea          #+#    #+#             */
-/*   Updated: 2016/11/08 17:49:12 by vroussea         ###   ########.fr       */
+/*   Updated: 2016/11/09 15:35:50 by vroussea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ static void	init_val(t_env *env, char *file)
 		ft_putendl("Error Scene");
 		quit_funct(env);
 	}
-	//ft_putendl(env->lst->content->name);
+	//ft_putendl(((t_pov *)env->lst->content)->name);
 	env->meml = mlx_get_data_addr(env->img, &bpp, &(env->sizel), &edan);
 	mlx_hook(env->win, 2, 0, key_funct, env);
 	mlx_hook(env->win, 17, 0, quit_funct, env);
