@@ -6,7 +6,7 @@
 /*   By: vroussea <vroussea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/10 15:06:19 by vroussea          #+#    #+#             */
-/*   Updated: 2016/11/15 15:45:01 by vroussea         ###   ########.fr       */
+/*   Updated: 2016/11/16 16:13:02 by vroussea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,6 @@ t_obj		create_obj(int val);
 int			select_obj();
 float		catch_float(char *str);
 int			catch_col(char *str);
-int			catch_int(char *str);
 int			loop_nb(char *str);
 void		sphere_type(t_obj *obj);
 void		plane_type(t_obj *obj);

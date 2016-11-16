@@ -6,7 +6,7 @@
 /*   By: vroussea <vroussea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/25 15:02:34 by vroussea          #+#    #+#             */
-/*   Updated: 2015/12/08 18:36:16 by vroussea         ###   ########.fr       */
+/*   Updated: 2016/11/16 16:04:17 by vroussea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 
 static void		ft_itod(char *str, unsigned int n, size_t size)
 {
-	str[size] = '\0';
 	size--;
 	if (n == 0)
 		str[0] = '0';

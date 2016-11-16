@@ -6,13 +6,13 @@
 /*   By: vroussea <vroussea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/15 11:26:19 by vroussea          #+#    #+#             */
-/*   Updated: 2016/11/16 11:57:29 by vroussea         ###   ########.fr       */
+/*   Updated: 2016/11/16 16:09:21 by vroussea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/scmk.h"
 
-t_pov			create_pov()
+t_pov			create_pov(void)
 {
 	t_pov	pov;
 
@@ -48,7 +48,7 @@ t_obj			create_obj(int val)
 	return (obj);
 }
 
-t_spot			create_spot()
+t_spot			create_spot(void)
 {
 	t_spot	spot;
 
