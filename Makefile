@@ -6,32 +6,41 @@
 #    By: vroussea <vroussea@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/11/24 09:55:27 by vroussea          #+#    #+#              #
-#    Updated: 2016/11/08 17:28:32 by vroussea         ###   ########.fr        #
+#    Updated: 2016/11/16 10:54:53 by vroussea         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-EXE =		rtv1
+EXE1 =		rtv1
+EXE2 =		scmk
 INCLUDES =	libft/libft.a
-HEADER =	rt_v1.h
+HEADER =	./includes/rt_v1.h ./includes/scmk.h
 MKINC =		make -C libft/
 MLX =		-lmlx -framework OpenGL -framework AppKit
 CC =		gcc
 CFLAGS =	-Wall -Wextra -Werror
-SOURCES =	main.c parser.c add_obj.c event.c tools.c
-OBJS =		$(SOURCES:.c=.o)
+SOURCES1 =	./srcs/rt_v1.c ./srcs/parser.c ./srcs/add_obj.c ./srcs/event.c     \
+			./srcs/tools.c
+SOURCES2 =	./srcs/scmk.c ./srcs/fill_struct.c ./srcs/obj_types.c              \
+			./srcs/tools_scene.c
+OBJS1 =		$(SOURCES1:.c=.o)
+OBJS2 =		$(SOURCES2:.c=.o)
 
-all :		$(EXE)
-$(EXE) :	$(OBJS) $(HEADER) Makefile
+all :		$(EXE1) $(EXE2)
+$(EXE1) :	$(OBJS1) $(HEADER) Makefile
 			$(MKINC)
-			$(CC) $(CFLAGS) -c $(SOURCES)
-			$(CC) $(CFLAGS) -o $(EXE) $(OBJS) -lm $(INCLUDES) $(MLX)
+			$(CC) $(CFLAGS) -c $(SOURCES1)
+			$(CC) $(CFLAGS) -o $(EXE1) $(OBJS1) -lm $(INCLUDES) $(MLX)
+$(EXE2) :	$(OBJS2) $(HEADER) Makefile
+			$(MKINC)
+			$(CC) $(CFLAGS) -c $(SOURCES2)
+			$(CC) $(CFLAGS) -o $(EXE2) $(OBJS2) $(INCLUDES)
 norm :
-			norminette $(SOURCES) $(HEADER)
+			norminette $(SOURCES1) $(SOURCES2) $(HEADER)
 meteo :
 			curl http://wttr.in/Paris
 clean :
-			-rm -f $(OBJS)
+			-rm -f $(OBJS1) $(OBJS2)
 fclean :	clean
 			$(MKINC) fclean
-			-rm -f $(EXE)
+			-rm -f $(EXE1) $(EXE2)
 re :		fclean all
