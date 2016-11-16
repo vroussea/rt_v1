@@ -6,13 +6,14 @@
 /*   By: vroussea <vroussea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/10 15:26:12 by vroussea          #+#    #+#             */
-/*   Updated: 2016/11/16 16:10:35 by vroussea         ###   ########.fr       */
+/*   Updated: 2016/11/16 16:44:55 by vroussea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/scmk.h"
 #include <fcntl.h>
 #include <unistd.h>
+#include <stdlib.h>
 
 static int		opener(void)
 {
@@ -20,15 +21,37 @@ static int		opener(void)
 	int		fd;
 	mode_t	mode;
 	char	*path;
+	char	*ext;
 
 	mode = S_IRUSR | S_IRGRP | S_IROTH | S_IWUSR;
 	ft_putendl("Enter scene name : ");
 	get_next_line(0, &line);
-	path = ft_strdup("../scenes/");
-	fd = open(ft_strcat(path, line), O_CREAT | O_WRONLY, mode);
+	path = ft_strdup("./scenes/");
+	ext = ft_strdup(".sc");
+	fd = open(ft_strcat(ft_strcat(path, line), ext), O_CREAT | O_WRONLY, mode);
 	ft_strdel(&line);
 	ft_strdel(&path);
 	return (fd);
+}
+
+static int		select_obj(void)
+{
+	char	*line;
+	int		val;
+
+	val = -1;
+	while (val < 0 || val > 1)
+	{
+		ft_putendl("Enter object type number : Sphere (0), Plane(1)");
+		if (get_next_line(0, &line) == -1)
+		{
+			ft_putendl("error with gnl while creating struct");
+			exit(0);
+		}
+		val = ft_atoi(line);
+		ft_strdel(&line);
+	}
+	return (val);
 }
 
 static void		objs_tab(t_scene *scene)
@@ -36,7 +59,9 @@ static void		objs_tab(t_scene *scene)
 	int		i;
 	char	*str;
 
-	scene->nb_obj = loop_nb("\nEnter object quantity : ");
+	scene->nb_obj = 0;
+	while (scene->nb_obj < 1)
+		scene->nb_obj = loop_nb("\nEnter object quantity : ");
 	i = 0;
 	scene->objs = (t_obj *)ft_memalloc(sizeof(t_obj) * scene->nb_obj);
 	while (i < scene->nb_obj)
@@ -55,7 +80,9 @@ static void		spots_tab(t_scene *scene)
 	int		i;
 	char	*str;
 
-	scene->nb_spot = loop_nb("\nEnter spot quantity : ");
+	scene->nb_spot = 0;
+	while (scene->nb_spot < 1)
+		scene->nb_spot = loop_nb("\nEnter spot quantity : ");
 	i = 0;
 	scene->spots = (t_spot *)ft_memalloc(sizeof(t_spot) * scene->nb_spot);
 	while (i < scene->nb_spot)
@@ -78,11 +105,11 @@ int				main(void)
 	scene.pov = create_pov();
 	objs_tab(&scene);
 	spots_tab(&scene);
-	write(fd, &scene, sizeof(t_pov) + sizeof(int) * 2);
-	if (scene.nb_obj > 0)
-		write(fd, &scene, sizeof(t_obj) * scene.nb_obj);
-	if (scene.nb_spot > 0)
-		write(fd, &scene, sizeof(t_spot) * scene.nb_spot);
+	write(fd, &scene,
+		sizeof(t_pov) +
+		sizeof(int) * 2 +
+		sizeof(t_obj) * scene.nb_obj +
+		sizeof(t_spot) * scene.nb_spot);
 	ft_memdel((void **)&(scene.objs));
 	ft_memdel((void **)&(scene.spots));
 	return (0);
