@@ -6,7 +6,7 @@
 #    By: vroussea <vroussea@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/11/24 09:55:27 by vroussea          #+#    #+#              #
-#    Updated: 2016/09/22 22:16:54 by vroussea         ###   ########.fr        #
+#    Updated: 2016/11/13 17:11:22 by vroussea         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -29,7 +29,7 @@ SOURCES =	ft_putchar.c ft_putchar_fd.c ft_putnbr.c ft_putnbr_fd.c ft_putstr.c\
 			ft_lstiter.c ft_lstmap.c ft_sqrt.c ft_lstadd_end.c ft_abs.c        \
 			get_next_line.c ft_intswap.c ft_tabdel.c ft_matrixid.c             \
 			ft_itoa_base.c ft_ltoa_base.c ft_putnbr_base.c ft_putnbr_base_fd.c \
-			ft_strrealloc.c ft_swap.c
+			ft_strrealloc.c ft_swap.c ft_atof.c
 OBJS =		$(SOURCES:.c=.o)
 
 all :		$(NAME)
@@ -37,7 +37,7 @@ $(NAME) :	$(OBJS) $(HEADER) Makefile
 			ar rc $(NAME) $(OBJS)
 			ranlib $(NAME)
 norm :
-			norminette $(SOURCES) libft.h get_next_line.h
+			norminette $(SOURCES) libft.h
 clean :
 			-rm $(OBJS)
 fclean :	clean

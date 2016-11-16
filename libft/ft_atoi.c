@@ -6,7 +6,7 @@
 /*   By: vroussea <vroussea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/26 12:02:38 by vroussea          #+#    #+#             */
-/*   Updated: 2015/12/05 14:20:53 by vroussea         ###   ########.fr       */
+/*   Updated: 2016/11/10 19:25:46 by vroussea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,10 @@
 
 int	ft_atoi(const char *str)
 {
-	size_t	size;
 	int		val;
 	int		neg;
 	size_t	cpt;
 
-	size = ft_strlen(str);
 	val = 0;
 	cpt = 0;
 	neg = 1;
