@@ -6,7 +6,7 @@
 /*   By: vroussea <vroussea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/06 14:36:29 by vroussea          #+#    #+#             */
-/*   Updated: 2016/11/16 10:59:32 by vroussea         ###   ########.fr       */
+/*   Updated: 2016/11/17 14:13:32 by vroussea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,10 @@
 # define RT_V1_H
 
 # include "../libft/libft.h"
+# define SIZE_X 1280
+# define SIZE_Y 720
+
+#pragma pack(1)
 
 typedef	struct	s_spot
 {
@@ -57,7 +61,7 @@ typedef	struct	s_env
 }				t_env;
 
 int				add_node(void *node, t_env *env);
-int				parser(char *file, t_env *env);
+t_scene			reader(char *file);
 void			caller(t_env *env);
 int				quit_funct(t_env *env);
 int				key_funct(int keycode, t_env *env);

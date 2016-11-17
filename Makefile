@@ -6,7 +6,7 @@
 #    By: vroussea <vroussea@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/11/24 09:55:27 by vroussea          #+#    #+#              #
-#    Updated: 2016/11/16 11:56:16 by vroussea         ###   ########.fr        #
+#    Updated: 2016/11/17 12:01:47 by vroussea         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,8 +19,7 @@ LIB =		libft/
 MLX =		-lmlx -framework OpenGL -framework AppKit
 CC =		gcc
 CFLAGS =	-Wall -Wextra -Werror
-SOURCES1 =	./srcs/rt_v1.c ./srcs/parser.c ./srcs/add_obj.c ./srcs/event.c     \
-			./srcs/tools.c
+SOURCES1 =	./srcs/rt_v1.c ./srcs/event.c ./srcs/tools.c ./srcs/get_struct.c
 SOURCES2 =	./srcs/scmk.c ./srcs/fill_struct.c ./srcs/obj_types.c              \
 			./srcs/tools_scene.c
 OBJS1 =		$(SOURCES1:.c=.o)

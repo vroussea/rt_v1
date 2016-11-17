@@ -6,7 +6,7 @@
 /*   By: vroussea <vroussea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/10 15:26:12 by vroussea          #+#    #+#             */
-/*   Updated: 2016/11/16 16:44:55 by vroussea         ###   ########.fr       */
+/*   Updated: 2016/11/17 14:47:23 by vroussea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 #include <fcntl.h>
 #include <unistd.h>
 #include <stdlib.h>
+#include <stdio.h>
 
 static int		opener(void)
 {
@@ -105,11 +106,9 @@ int				main(void)
 	scene.pov = create_pov();
 	objs_tab(&scene);
 	spots_tab(&scene);
-	write(fd, &scene,
-		sizeof(t_pov) +
-		sizeof(int) * 2 +
-		sizeof(t_obj) * scene.nb_obj +
-		sizeof(t_spot) * scene.nb_spot);
+	write(fd, &scene, sizeof(t_pov) + sizeof(int) * 2 );
+	write(fd, scene.objs, sizeof(t_obj) * scene.nb_obj);
+	write(fd, scene.spots, sizeof(t_spot) * scene.nb_spot);
 	ft_memdel((void **)&(scene.objs));
 	ft_memdel((void **)&(scene.spots));
 	return (0);
