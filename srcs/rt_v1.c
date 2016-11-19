@@ -6,7 +6,7 @@
 /*   By: vroussea <vroussea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/16 10:40:43 by vroussea          #+#    #+#             */
-/*   Updated: 2016/11/17 12:40:31 by vroussea         ###   ########.fr       */
+/*   Updated: 2016/11/17 17:19:14 by vroussea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,7 +67,7 @@ int			main(int argc, char **argv)
 			!(img = mlx_new_image(mlx, SIZE_X, SIZE_Y)))
 			ft_putendl("Error : Can't initialize mlx.");
 		else
-			reader(argv[1]);
+			get_struct(argv[1]);
 			//init_val(env, argv[1]);
 	}
 	return (0);

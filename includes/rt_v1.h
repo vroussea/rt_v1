@@ -6,7 +6,7 @@
 /*   By: vroussea <vroussea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/06 14:36:29 by vroussea          #+#    #+#             */
-/*   Updated: 2016/11/17 14:13:32 by vroussea         ###   ########.fr       */
+/*   Updated: 2016/11/17 17:18:54 by vroussea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,7 @@ typedef	struct	s_env
 }				t_env;
 
 int				add_node(void *node, t_env *env);
-t_scene			reader(char *file);
+t_scene			get_struct(char *file);
 void			caller(t_env *env);
 int				quit_funct(t_env *env);
 int				key_funct(int keycode, t_env *env);
