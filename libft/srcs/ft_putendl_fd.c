@@ -1,32 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   event.c                                            :+:      :+:    :+:   */
+/*   ft_putendl_fd.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vroussea <vroussea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/06/07 18:48:41 by vroussea          #+#    #+#             */
-/*   Updated: 2016/11/21 17:37:02 by vroussea         ###   ########.fr       */
+/*   Created: 2015/11/24 21:30:37 by vroussea          #+#    #+#             */
+/*   Updated: 2015/12/07 15:21:39 by vroussea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <mlx.h>
-#include <stdlib.h>
-#include "../includes/rt_v1.h"
+#include "libft.h"
 
-int			key_funct(int keycode, t_env *env)
+void	ft_putendl_fd(char const *s, int fd)
 {
-	if (keycode == 53)
-		quit_funct(env);
-	return (1);
-}
-
-int			quit_funct(t_env *env)
-{
-	mlx_destroy_image(env->mlx, env->img);
-	mlx_destroy_window(env->mlx, env->win);
-	ft_memdel((void **)&env);
-	ft_putendl("Program Closed");
-	exit(0);
-	return (0);
+	ft_putstr_fd(s, fd);
+	ft_putchar_fd('\n', fd);
 }

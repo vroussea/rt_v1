@@ -1,32 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   event.c                                            :+:      :+:    :+:   */
+/*   ft_strcmp.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vroussea <vroussea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/06/07 18:48:41 by vroussea          #+#    #+#             */
-/*   Updated: 2016/11/21 17:37:02 by vroussea         ###   ########.fr       */
+/*   Created: 2015/11/28 19:33:34 by vroussea          #+#    #+#             */
+/*   Updated: 2015/12/15 22:45:41 by vroussea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <mlx.h>
-#include <stdlib.h>
-#include "../includes/rt_v1.h"
-
-int			key_funct(int keycode, t_env *env)
+int	ft_strcmp(const char *s1, const char *s2)
 {
-	if (keycode == 53)
-		quit_funct(env);
-	return (1);
-}
+	unsigned char	*tmp1;
+	unsigned char	*tmp2;
 
-int			quit_funct(t_env *env)
-{
-	mlx_destroy_image(env->mlx, env->img);
-	mlx_destroy_window(env->mlx, env->win);
-	ft_memdel((void **)&env);
-	ft_putendl("Program Closed");
-	exit(0);
+	tmp1 = (unsigned char *)s1;
+	tmp2 = (unsigned char *)s2;
+	while (*tmp1 != '\0' && *tmp2 != '\0')
+	{
+		if (*tmp1 != *tmp2)
+			return ((*tmp1 - *tmp2));
+		tmp1++;
+		tmp2++;
+	}
+	if (*tmp1 != *tmp2)
+		return ((*tmp1 - *tmp2));
 	return (0);
 }

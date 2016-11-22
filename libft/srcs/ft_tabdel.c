@@ -1,32 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   event.c                                            :+:      :+:    :+:   */
+/*   ft_tabdel.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vroussea <vroussea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/06/07 18:48:41 by vroussea          #+#    #+#             */
-/*   Updated: 2016/11/21 17:37:02 by vroussea         ###   ########.fr       */
+/*   Created: 2016/03/31 22:17:44 by vroussea          #+#    #+#             */
+/*   Updated: 2016/04/26 20:24:07 by vroussea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <mlx.h>
-#include <stdlib.h>
-#include "../includes/rt_v1.h"
+#include "libft.h"
 
-int			key_funct(int keycode, t_env *env)
+void	ft_tabdel(void ***tab)
 {
-	if (keycode == 53)
-		quit_funct(env);
-	return (1);
-}
+	int		i;
+	void	**ptr;
 
-int			quit_funct(t_env *env)
-{
-	mlx_destroy_image(env->mlx, env->img);
-	mlx_destroy_window(env->mlx, env->win);
-	ft_memdel((void **)&env);
-	ft_putendl("Program Closed");
-	exit(0);
-	return (0);
+	i = 0;
+	if (*tab)
+	{
+		ptr = *tab;
+		while (ptr[i] != NULL)
+		{
+			ft_memdel(&ptr[i]);
+			i++;
+		}
+		ft_memdel(ptr);
+		*tab = NULL;
+	}
 }

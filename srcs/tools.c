@@ -6,21 +6,19 @@
 /*   By: vroussea <vroussea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/07/21 18:40:34 by vroussea          #+#    #+#             */
-/*   Updated: 2016/11/17 11:59:50 by vroussea         ###   ########.fr       */
+/*   Updated: 2016/11/21 17:53:42 by vroussea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/rt_v1.h"
-#include <stdlib.h>
-#include <math.h>
 
-void		pixel(int x, int y, int col, t_env *env)
+/*void		pixel(t_pt pt, t_env *env, int size_l, char *str)
 {
-	if (x > 0 && x < env->sx && y > 0 && y < env->sy)
-		ft_memcpy(&env->meml[(x - 1) * 4 + (y - 1) * env->sizel], &col, 4);
+	if (pt.x > 0 && pt.x < SIZE_X && pt.y > 0 && pt.y < SIZE_Y)
+		ft_memcpy(str[(pt.x - 1) * 4 + (pt.y - 1) * size_l], &(pt.col), 4);
 }
 
-/*int			add_node(void *node, t_env *env)
+int			add_node(void *node, t_env *env)
 {
 	t_list *new;
 

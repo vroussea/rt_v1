@@ -6,14 +6,13 @@
 /*   By: vroussea <vroussea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/10 15:06:19 by vroussea          #+#    #+#             */
-/*   Updated: 2016/11/16 16:31:17 by vroussea         ###   ########.fr       */
+/*   Updated: 2016/11/21 14:58:57 by vroussea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef SCMK_H
 # define SCMK_H
 
-# include "../libft/libft.h"
 # include "rt_v1.h"
 
 t_pov		create_pov();

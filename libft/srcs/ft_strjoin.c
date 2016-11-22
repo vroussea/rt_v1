@@ -1,32 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   event.c                                            :+:      :+:    :+:   */
+/*   ft_strjoin.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vroussea <vroussea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/06/07 18:48:41 by vroussea          #+#    #+#             */
-/*   Updated: 2016/11/21 17:37:02 by vroussea         ###   ########.fr       */
+/*   Created: 2015/12/04 17:29:29 by vroussea          #+#    #+#             */
+/*   Updated: 2015/12/04 22:19:19 by vroussea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <mlx.h>
-#include <stdlib.h>
-#include "../includes/rt_v1.h"
+#include "libft.h"
 
-int			key_funct(int keycode, t_env *env)
+char	*ft_strjoin(char const *s1, char const *s2)
 {
-	if (keycode == 53)
-		quit_funct(env);
-	return (1);
-}
+	char	*str;
 
-int			quit_funct(t_env *env)
-{
-	mlx_destroy_image(env->mlx, env->img);
-	mlx_destroy_window(env->mlx, env->win);
-	ft_memdel((void **)&env);
-	ft_putendl("Program Closed");
-	exit(0);
-	return (0);
+	if ((str = ft_strnew(ft_strlen(s1) + ft_strlen(s2))))
+	{
+		ft_strcpy(str, s1);
+		ft_strcat(str, s2);
+	}
+	else
+		str = NULL;
+	return (str);
 }

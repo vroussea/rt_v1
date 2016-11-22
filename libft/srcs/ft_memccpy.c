@@ -1,32 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   event.c                                            :+:      :+:    :+:   */
+/*   ft_memccpy.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vroussea <vroussea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/06/07 18:48:41 by vroussea          #+#    #+#             */
-/*   Updated: 2016/11/21 17:37:02 by vroussea         ###   ########.fr       */
+/*   Created: 2015/11/24 10:38:05 by vroussea          #+#    #+#             */
+/*   Updated: 2015/11/28 19:46:59 by vroussea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <mlx.h>
-#include <stdlib.h>
-#include "../includes/rt_v1.h"
+#include "libft.h"
 
-int			key_funct(int keycode, t_env *env)
+void	*ft_memccpy(void *dst, const void *src, int c, size_t n)
 {
-	if (keycode == 53)
-		quit_funct(env);
-	return (1);
-}
+	size_t			i;
+	unsigned char	*tmp;
 
-int			quit_funct(t_env *env)
-{
-	mlx_destroy_image(env->mlx, env->img);
-	mlx_destroy_window(env->mlx, env->win);
-	ft_memdel((void **)&env);
-	ft_putendl("Program Closed");
-	exit(0);
-	return (0);
+	tmp = (unsigned char *)src;
+	i = 0;
+	while (i < n)
+	{
+		if (tmp[i] == (unsigned char)c)
+		{
+			ft_memcpy(dst, src, i + 1);
+			return (dst + i + 1);
+		}
+		i++;
+	}
+	ft_memcpy(dst, src, n);
+	return (NULL);
 }

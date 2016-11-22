@@ -6,18 +6,19 @@
 /*   By: vroussea <vroussea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/06 14:36:29 by vroussea          #+#    #+#             */
-/*   Updated: 2016/11/17 17:18:54 by vroussea         ###   ########.fr       */
+/*   Updated: 2016/11/22 11:53:34 by vroussea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef RT_V1_H
 # define RT_V1_H
 
-# include "../libft/libft.h"
+# include "../libft/includes/libft.h"
 # define SIZE_X 1280
 # define SIZE_Y 720
+# define SCENE_VER 1.01
 
-#pragma pack(1)
+# pragma pack(1)
 
 typedef	struct	s_spot
 {
@@ -33,6 +34,7 @@ typedef	struct	s_pov
 
 typedef	struct	s_object
 {
+	int			type;
 	t_vectorf3	pos;
 	t_vectorf3	dir;
 	int			ray;
@@ -52,17 +54,12 @@ typedef	struct	s_env
 {
 	void	*mlx;
 	void	*win;
-	int		sx;
-	int		sy;
 	void	*img;
-	char	*meml;
-	int		sizel;
-	t_list	*lst;
 }				t_env;
 
 int				add_node(void *node, t_env *env);
 t_scene			get_struct(char *file);
-void			caller(t_env *env);
+void			caller(t_env *env, char *str, int size_l, t_scene scene);
 int				quit_funct(t_env *env);
 int				key_funct(int keycode, t_env *env);
 void			pixel(int x, int y, int col, t_env *env);

@@ -1,32 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   event.c                                            :+:      :+:    :+:   */
+/*   ft_memcmp.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vroussea <vroussea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/06/07 18:48:41 by vroussea          #+#    #+#             */
-/*   Updated: 2016/11/21 17:37:02 by vroussea         ###   ########.fr       */
+/*   Created: 2015/11/24 16:01:11 by vroussea          #+#    #+#             */
+/*   Updated: 2015/12/15 23:08:16 by vroussea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <mlx.h>
-#include <stdlib.h>
-#include "../includes/rt_v1.h"
+#include "libft.h"
 
-int			key_funct(int keycode, t_env *env)
+int		ft_memcmp(const void *s1, const void *s2, size_t n)
 {
-	if (keycode == 53)
-		quit_funct(env);
-	return (1);
-}
+	unsigned char	*tmp1;
+	unsigned char	*tmp2;
 
-int			quit_funct(t_env *env)
-{
-	mlx_destroy_image(env->mlx, env->img);
-	mlx_destroy_window(env->mlx, env->win);
-	ft_memdel((void **)&env);
-	ft_putendl("Program Closed");
-	exit(0);
+	tmp1 = (unsigned char *)s1;
+	tmp2 = (unsigned char *)s2;
+	while (n)
+	{
+		if (*tmp1 != *tmp2)
+			return (*tmp1 - *tmp2);
+		n--;
+		tmp1++;
+		tmp2++;
+	}
 	return (0);
 }

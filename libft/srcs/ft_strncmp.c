@@ -1,32 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   event.c                                            :+:      :+:    :+:   */
+/*   ft_strncmp.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vroussea <vroussea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/06/07 18:48:41 by vroussea          #+#    #+#             */
-/*   Updated: 2016/11/21 17:37:02 by vroussea         ###   ########.fr       */
+/*   Created: 2015/11/29 11:37:31 by vroussea          #+#    #+#             */
+/*   Updated: 2015/12/02 23:12:54 by vroussea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <mlx.h>
-#include <stdlib.h>
-#include "../includes/rt_v1.h"
+#include "libft.h"
 
-int			key_funct(int keycode, t_env *env)
+int	ft_strncmp(const char *s1, const char *s2, size_t n)
 {
-	if (keycode == 53)
-		quit_funct(env);
-	return (1);
-}
-
-int			quit_funct(t_env *env)
-{
-	mlx_destroy_image(env->mlx, env->img);
-	mlx_destroy_window(env->mlx, env->win);
-	ft_memdel((void **)&env);
-	ft_putendl("Program Closed");
-	exit(0);
-	return (0);
+	if (ft_strlen(s1) >= n && ft_strlen(s2) >= n)
+		return (ft_memcmp(s1, s2, n));
+	if (ft_strlen(s1) > ft_strlen(s2))
+		return (ft_memcmp(s1, s2, ft_strlen(s2) + 1));
+	else
+		return (ft_memcmp(s1, s2, ft_strlen(s1) + 1));
 }

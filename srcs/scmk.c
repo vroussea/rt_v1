@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   scmk.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vroussea <vroussea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/11/10 15:26:12 by vroussea          #+#    #+#             */
-/*   Updated: 2016/11/17 14:47:23 by vroussea         ###   ########.fr       */
+/*   Created: 2016/11/22 11:31:31 by vroussea          #+#    #+#             */
+/*   Updated: 2016/11/22 11:40:22 by vroussea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 #include <fcntl.h>
 #include <unistd.h>
 #include <stdlib.h>
-#include <stdio.h>
 
 static int		opener(void)
 {
@@ -101,12 +100,15 @@ int				main(void)
 {
 	t_scene	scene;
 	int		fd;
+	float	struct_ver;
 
 	fd = opener();
 	scene.pov = create_pov();
 	objs_tab(&scene);
 	spots_tab(&scene);
-	write(fd, &scene, sizeof(t_pov) + sizeof(int) * 2 );
+	struct_ver = SCENE_VER;
+	write(fd, &struct_ver, sizeof(float));
+	write(fd, &scene, sizeof(t_pov) + sizeof(int) * 2);
 	write(fd, scene.objs, sizeof(t_obj) * scene.nb_obj);
 	write(fd, scene.spots, sizeof(t_spot) * scene.nb_spot);
 	ft_memdel((void **)&(scene.objs));

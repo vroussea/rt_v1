@@ -6,7 +6,7 @@
 /*   By: vroussea <vroussea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/15 11:26:19 by vroussea          #+#    #+#             */
-/*   Updated: 2016/11/16 16:31:53 by vroussea         ###   ########.fr       */
+/*   Updated: 2016/11/22 11:14:16 by vroussea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,7 @@ t_obj			create_obj(int val)
 	t_obj			obj;
 	unsigned char	*col;
 
+	obj.type = val;
 	ft_putendl("Enter x, y and z coordinates");
 	obj.pos.x = catch_float("x : ");
 	obj.pos.y = catch_float("y : ");

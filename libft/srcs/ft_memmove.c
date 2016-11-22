@@ -1,32 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   event.c                                            :+:      :+:    :+:   */
+/*   ft_memmove.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vroussea <vroussea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/06/07 18:48:41 by vroussea          #+#    #+#             */
-/*   Updated: 2016/11/21 17:37:02 by vroussea         ###   ########.fr       */
+/*   Created: 2015/11/24 10:53:24 by vroussea          #+#    #+#             */
+/*   Updated: 2015/12/18 14:37:15 by vroussea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <mlx.h>
-#include <stdlib.h>
-#include "../includes/rt_v1.h"
+#include "libft.h"
 
-int			key_funct(int keycode, t_env *env)
+void	*ft_memmove(void *dst, const void *src, size_t len)
 {
-	if (keycode == 53)
-		quit_funct(env);
-	return (1);
-}
+	unsigned char	*tmp_dst;
+	unsigned char	*tmp_src;
+	size_t			i;
 
-int			quit_funct(t_env *env)
-{
-	mlx_destroy_image(env->mlx, env->img);
-	mlx_destroy_window(env->mlx, env->win);
-	ft_memdel((void **)&env);
-	ft_putendl("Program Closed");
-	exit(0);
-	return (0);
+	tmp_dst = (unsigned char *)dst;
+	tmp_src = (unsigned char *)src;
+	i = 0;
+	if (src < dst)
+		while (len--)
+			tmp_dst[len] = tmp_src[len];
+	else
+		while (i < len)
+		{
+			tmp_dst[i] = tmp_src[i];
+			i++;
+		}
+	return (dst);
 }

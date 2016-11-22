@@ -1,32 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   event.c                                            :+:      :+:    :+:   */
+/*   ft_strinv.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vroussea <vroussea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/06/07 18:48:41 by vroussea          #+#    #+#             */
-/*   Updated: 2016/11/21 17:37:02 by vroussea         ###   ########.fr       */
+/*   Created: 2015/11/28 18:44:49 by vroussea          #+#    #+#             */
+/*   Updated: 2015/11/28 19:15:32 by vroussea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <mlx.h>
-#include <stdlib.h>
-#include "../includes/rt_v1.h"
+#include "libft.h"
 
-int			key_funct(int keycode, t_env *env)
+char	*ft_strinv(char *s)
 {
-	if (keycode == 53)
-		quit_funct(env);
-	return (1);
-}
+	char	*tmp;
+	size_t	size_tmp;
+	size_t	size_s;
 
-int			quit_funct(t_env *env)
-{
-	mlx_destroy_image(env->mlx, env->img);
-	mlx_destroy_window(env->mlx, env->win);
-	ft_memdel((void **)&env);
-	ft_putendl("Program Closed");
-	exit(0);
-	return (0);
+	size_tmp = 0;
+	size_s = ft_strlen(s);
+	tmp = ft_strnew(size_s);
+	while (size_s)
+	{
+		size_s--;
+		tmp[size_tmp] = s[size_s];
+		size_tmp++;
+	}
+	tmp[size_tmp] = '\0';
+	return (tmp);
 }

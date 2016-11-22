@@ -1,32 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   event.c                                            :+:      :+:    :+:   */
+/*   ft_strcat.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vroussea <vroussea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/06/07 18:48:41 by vroussea          #+#    #+#             */
-/*   Updated: 2016/11/21 17:37:02 by vroussea         ###   ########.fr       */
+/*   Created: 2015/11/25 15:16:35 by vroussea          #+#    #+#             */
+/*   Updated: 2015/12/03 20:03:51 by vroussea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <mlx.h>
-#include <stdlib.h>
-#include "../includes/rt_v1.h"
-
-int			key_funct(int keycode, t_env *env)
+char	*ft_strcat(char *s1, const char *s2)
 {
-	if (keycode == 53)
-		quit_funct(env);
-	return (1);
-}
+	char	*tmp1;
+	int		cpt;
 
-int			quit_funct(t_env *env)
-{
-	mlx_destroy_image(env->mlx, env->img);
-	mlx_destroy_window(env->mlx, env->win);
-	ft_memdel((void **)&env);
-	ft_putendl("Program Closed");
-	exit(0);
-	return (0);
+	tmp1 = s1;
+	cpt = 0;
+	while (*tmp1 != '\0')
+		tmp1++;
+	while (s2[cpt])
+	{
+		*tmp1 = s2[cpt];
+		tmp1++;
+		cpt++;
+	}
+	*tmp1 = '\0';
+	return (s1);
 }

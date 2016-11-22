@@ -1,32 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   event.c                                            :+:      :+:    :+:   */
+/*   ft_strrealloc.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vroussea <vroussea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/06/07 18:48:41 by vroussea          #+#    #+#             */
-/*   Updated: 2016/11/21 17:37:02 by vroussea         ###   ########.fr       */
+/*   Created: 2016/09/11 16:23:08 by vroussea          #+#    #+#             */
+/*   Updated: 2016/09/14 17:04:22 by vroussea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <mlx.h>
-#include <stdlib.h>
-#include "../includes/rt_v1.h"
+#include "libft.h"
 
-int			key_funct(int keycode, t_env *env)
+char	*ft_strrealloc(char *str, size_t n)
 {
-	if (keycode == 53)
-		quit_funct(env);
-	return (1);
-}
+	int		size;
+	int		i;
+	char	*new;
 
-int			quit_funct(t_env *env)
-{
-	mlx_destroy_image(env->mlx, env->img);
-	mlx_destroy_window(env->mlx, env->win);
-	ft_memdel((void **)&env);
-	ft_putendl("Program Closed");
-	exit(0);
-	return (0);
+	size = ft_strlen(str);
+	if (!(new = ft_strnew(size + n)))
+		return (NULL);
+	i = 0;
+	while (i < size)
+	{
+		new[i] = str[i];
+		i++;
+	}
+	ft_strdel(&str);
+	return (new);
 }

@@ -1,32 +1,40 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   event.c                                            :+:      :+:    :+:   */
+/*   ft_atoi.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vroussea <vroussea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/06/07 18:48:41 by vroussea          #+#    #+#             */
-/*   Updated: 2016/11/21 17:37:02 by vroussea         ###   ########.fr       */
+/*   Created: 2015/11/26 12:02:38 by vroussea          #+#    #+#             */
+/*   Updated: 2016/11/10 19:25:46 by vroussea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <mlx.h>
-#include <stdlib.h>
-#include "../includes/rt_v1.h"
+#include "libft.h"
 
-int			key_funct(int keycode, t_env *env)
+int	ft_atoi(const char *str)
 {
-	if (keycode == 53)
-		quit_funct(env);
-	return (1);
-}
+	int		val;
+	int		neg;
+	size_t	cpt;
 
-int			quit_funct(t_env *env)
-{
-	mlx_destroy_image(env->mlx, env->img);
-	mlx_destroy_window(env->mlx, env->win);
-	ft_memdel((void **)&env);
-	ft_putendl("Program Closed");
-	exit(0);
-	return (0);
+	val = 0;
+	cpt = 0;
+	neg = 1;
+	while (ft_isspace(str[cpt]))
+		cpt++;
+	if (str[cpt] == '-')
+	{
+		neg = -neg;
+		cpt++;
+	}
+	else if (str[cpt] == '+')
+		cpt++;
+	while (ft_isdigit(str[cpt]))
+	{
+		val = val * 10;
+		val = (str[cpt] - '0') + val;
+		cpt++;
+	}
+	return (val * neg);
 }
