@@ -6,7 +6,7 @@
 #    By: vroussea <vroussea@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/11/24 09:55:27 by vroussea          #+#    #+#              #
-#    Updated: 2016/11/22 10:42:49 by vroussea         ###   ########.fr        #
+#    Updated: 2016/11/23 17:17:02 by vroussea         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -71,7 +71,7 @@ all :		$(LIB_A) $(OBJ)
 $(LIB_A) :	$(OBJ)
 		@ar rc $@ $(OBJ)
 		@ranlib $@
-		@echo "$(CLEAR)$(LIG)$(BLUE)  Creating Libft  $(CLEAR)$(LIG)"
+		@echo "$(CLEAR)$(LIG)$(BLUE)  Creating Libft $(CLEAR)$(LIG)"
 $(OBJ_DIR)/%.o: $(SRC_DIR)/%.c
 		@mkdir -p $(OBJ_DIR) 2> /dev/null || true
 		@$(CC) $(CFLAGS) $(INC) -o $@ -c $<
@@ -87,4 +87,5 @@ fclean :	clean
 		@echo "$(CLEAR)$(TRA)$(RED)  Removing Library $(CLEAR)$(TRA)"
 			@$(RM) $(LIB_A)
 re :		fclean all
-.PHONY:		all, clean, fclean, re
+.PHONY :	all, clean, fclean, re
+.SILENT :

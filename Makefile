@@ -6,7 +6,7 @@
 #    By: vroussea <vroussea@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/11/24 09:55:27 by vroussea          #+#    #+#              #
-#    Updated: 2016/11/22 10:39:08 by vroussea         ###   ########.fr        #
+#    Updated: 2016/11/23 17:15:53 by vroussea         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -65,10 +65,10 @@ INC =		$(addprefix -I, $(INC_DIR))
 all :		$(EXE) $(EXE2)
 $(EXE) :	$(SRC) $(OBJ) $(LIBFT)
 		@$(CC) $(LIBMLX) $(LIBFT) $(OBJ) -o $@
-		@echo "$(CLEAR)$(LIG)$(BLUE)  Compiling rtv1 $(CLEAR)$(LIG)"
+		@echo "$(CLEAR)$(LIG)$(BLUE)  Compiling "$(EXE)" $(CLEAR)$(LIG)"
 $(EXE2) :	$(SRC2) $(OBJ2) $(LIBFT)
 		@$(CC) $(LIBMLX) $(LIBFT) $(OBJ2) -o $@
-		@echo "$(CLEAR)$(LIG)$(BLUE)  Compiling scmk $(CLEAR)$(LIG)"
+		@echo "$(CLEAR)$(LIG)$(BLUE)  Compiling "$(EXE2)" $(CLEAR)$(LIG)"
 $(LIBFT) :
 		@$(MAKELIBFT) all
 $(OBJ_DIR)/%.o: $(SRC_DIR)/%.c
@@ -92,4 +92,5 @@ fclean :	clean
 		@$(MAKELIBFT) fclean
 		@$(RM) $(EXE) $(EXE2)
 re :		fclean all
-.PHONY:	all, clean, fclean, re
+.PHONY :	all, clean, fclean, re
+.SILENT :

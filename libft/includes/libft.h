@@ -6,7 +6,7 @@
 /*   By: vroussea <vroussea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/23 14:50:51 by vroussea          #+#    #+#             */
-/*   Updated: 2016/11/13 17:07:51 by vroussea         ###   ########.fr       */
+/*   Updated: 2016/11/22 11:07:08 by vroussea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,13 @@ typedef struct		s_vectorf3
 	float			y;
 	float			z;
 }					t_vectorf3;
+
+typedef struct		s_pt
+{
+	int	x;
+	int	y;
+	int	col;
+}					t_pt;
 
 typedef struct		s_file
 {
