@@ -6,14 +6,12 @@
 /*   By: vroussea <vroussea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/05 22:07:54 by vroussea          #+#    #+#             */
-/*   Updated: 2016/03/18 15:20:10 by vroussea         ###   ########.fr       */
+/*   Updated: 2016/12/07 13:49:58 by vroussea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-#include <stdlib.h>
 #include <unistd.h>
-#include <fcntl.h>
 
 static int		cleaner(t_file *crt, int ret)
 {

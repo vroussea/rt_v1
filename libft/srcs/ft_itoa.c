@@ -6,7 +6,7 @@
 /*   By: vroussea <vroussea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/25 15:02:34 by vroussea          #+#    #+#             */
-/*   Updated: 2016/11/16 16:04:17 by vroussea         ###   ########.fr       */
+/*   Updated: 2016/12/01 11:51:49 by vroussea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,9 +27,7 @@ static void		ft_itod(char *str, unsigned int n, size_t size)
 
 static size_t	ft_sizestr(unsigned int n)
 {
-	if (n > 9)
-		return (1 + ft_sizestr(n / 10));
-	return (1);
+	return (n > 9 ? 1 + ft_sizestr(n / 10) : 1);
 }
 
 char			*ft_itoa(int n)

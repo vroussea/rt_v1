@@ -6,7 +6,7 @@
 /*   By: vroussea <vroussea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/30 11:34:15 by vroussea          #+#    #+#             */
-/*   Updated: 2015/12/09 12:52:17 by vroussea         ###   ########.fr       */
+/*   Updated: 2016/11/24 13:00:12 by vroussea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,9 +21,8 @@ char	*ft_strtrim(char const *s)
 	tmp = (char *)s;
 	while (*tmp == ' ' || *tmp == '\n' || *tmp == '\t')
 		tmp++;
-	size = ft_strlen(tmp);
-	if (size == 0)
-		return ("");
+	if ((size = ft_strlen(tmp)) == 0)
+		return (ft_strnew(0));
 	while (tmp[size - 1] == ' ' || tmp[size - 1] == '\n'
 			|| tmp[size - 1] == '\t')
 		size--;
