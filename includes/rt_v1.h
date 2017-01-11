@@ -6,7 +6,7 @@
 /*   By: vroussea <vroussea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/06 14:36:29 by vroussea          #+#    #+#             */
-/*   Updated: 2016/11/22 11:53:34 by vroussea         ###   ########.fr       */
+/*   Updated: 2017/01/11 18:41:49 by vroussea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,38 +16,41 @@
 # include "../libft/includes/libft.h"
 # define SIZE_X 1280
 # define SIZE_Y 720
-# define SCENE_VER 1.01
+# define SCENE_VER 1.06
+# define CAM scene.pov
+# define SPOT scene.spots
+# define QUAD scene.quads
+# define PI 3.14159265358979323846
+# define SOURCE_SIZE 0x100000
+# define SPHERE 0
+# define CONE 1
+# define CYLINDRE 2
+# define PLANE 3
+# define DX dir.x
+# define DY dir.y
+# define DZ dir.z
+# define PX pos.x
+# define PY pos.y
+# define PZ pos.z
 
 # pragma pack(1)
-
-typedef	struct	s_spot
-{
-	t_vectorf3	pos;
-	t_vectorf3	dir;
-}				t_spot;
-
-typedef	struct	s_pov
-{
-	t_vectorf3	pos;
-	t_vectorf3	dir;
-}				t_pov;
 
 typedef	struct	s_object
 {
 	int			type;
-	t_vectorf3	pos;
-	t_vectorf3	dir;
-	int			ray;
+	t_vector3d	pos;
+	t_vector3d	dir;
+	double		size;
 	int			col;
 }				t_obj;
 
 typedef struct	s_scene
 {
-	t_pov		pov;
-	int			nb_obj;
+	t_obj		pov;
+	int			nb_quad;
 	int			nb_spot;
-	t_obj		*objs;
-	t_spot		*spots;
+	t_obj		*quads;
+	t_obj		*spots;
 }				t_scene;
 
 typedef	struct	s_env
@@ -64,5 +67,6 @@ int				quit_funct(t_env *env);
 int				key_funct(int keycode, t_env *env);
 void			pixel(int x, int y, int col, t_env *env);
 void			del_node(void *data, size_t size_data);
+void			init_color(int **col);
 
 #endif

@@ -6,14 +6,14 @@
 /*   By: vroussea <vroussea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/16 10:41:47 by vroussea          #+#    #+#             */
-/*   Updated: 2016/11/16 16:32:50 by vroussea         ###   ########.fr       */
+/*   Updated: 2016/12/16 15:48:23 by vroussea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/scmk.h"
 #include <stdlib.h>
 
-float		catch_float(char *str)
+double		catch_double(char *str)
 {
 	char	*line;
 	float	val;
@@ -24,7 +24,7 @@ float		catch_float(char *str)
 		ft_putendl("error with gnl while creating struct");
 		exit(0);
 	}
-	val = ft_atof(line);
+	val = ft_atod(line);
 	ft_strdel(&line);
 	return (val);
 }
@@ -69,18 +69,18 @@ int			catch_col(char *str)
 	return (val);
 }
 
-t_vectorf3	dir(void)
+t_vector3d	dir(void)
 {
-	t_vectorf3	dir;
+	t_vector3d	dir;
 
 	dir.x = 0;
 	dir.y = 0;
 	dir.z = 0;
 	while (dir.x == 0 && dir.y == 0 && dir.z == 0)
 	{
-		dir.x = catch_float("x : ");
-		dir.y = catch_float("y : ");
-		dir.z = catch_float("z : ");
+		dir.x = catch_double("x : ");
+		dir.y = catch_double("y : ");
+		dir.z = catch_double("z : ");
 		if (dir.x == 0 && dir.y == 0 && dir.z == 0)
 			ft_putendl("vector must not be NULL");
 	}

@@ -6,7 +6,7 @@
 /*   By: vroussea <vroussea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/22 11:31:31 by vroussea          #+#    #+#             */
-/*   Updated: 2016/11/22 11:40:22 by vroussea         ###   ########.fr       */
+/*   Updated: 2016/12/17 13:14:34 by vroussea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,18 +59,18 @@ static void		objs_tab(t_scene *scene)
 	int		i;
 	char	*str;
 
-	scene->nb_obj = 0;
-	while (scene->nb_obj < 1)
-		scene->nb_obj = loop_nb("\nEnter object quantity : ");
+	scene->nb_quad = 0;
+	while (scene->nb_quad < 1)
+		scene->nb_quad = loop_nb("\nEnter object quantity : ");
 	i = 0;
-	scene->objs = (t_obj *)ft_memalloc(sizeof(t_obj) * scene->nb_obj);
-	while (i < scene->nb_obj)
+	scene->quads = (t_obj *)ft_memalloc(sizeof(t_obj) * scene->nb_quad);
+	while (i < scene->nb_quad)
 	{
 		ft_putstr("\nObj number : ");
 		str = ft_itoa(i + 1);
 		ft_putendl(str);
 		ft_strdel(&str);
-		scene->objs[i] = create_obj(select_obj());
+		scene->quads[i] = create_obj(select_obj());
 		i++;
 	}
 }
@@ -84,7 +84,7 @@ static void		spots_tab(t_scene *scene)
 	while (scene->nb_spot < 1)
 		scene->nb_spot = loop_nb("\nEnter spot quantity : ");
 	i = 0;
-	scene->spots = (t_spot *)ft_memalloc(sizeof(t_spot) * scene->nb_spot);
+	scene->spots = (t_obj *)ft_memalloc(sizeof(t_obj) * scene->nb_spot);
 	while (i < scene->nb_spot)
 	{
 		ft_putstr("\nSpot number : ");
@@ -108,10 +108,11 @@ int				main(void)
 	spots_tab(&scene);
 	struct_ver = SCENE_VER;
 	write(fd, &struct_ver, sizeof(float));
-	write(fd, &scene, sizeof(t_pov) + sizeof(int) * 2);
-	write(fd, scene.objs, sizeof(t_obj) * scene.nb_obj);
-	write(fd, scene.spots, sizeof(t_spot) * scene.nb_spot);
-	ft_memdel((void **)&(scene.objs));
+	write(fd, &scene, sizeof(t_obj) + sizeof(int) * 2);
+	write(fd, scene.quads, sizeof(t_obj) * scene.nb_quad);
+	write(fd, scene.spots, sizeof(t_obj) * scene.nb_spot);
+	ft_memdel((void **)&(scene.quads));
 	ft_memdel((void **)&(scene.spots));
+	close(fd);
 	return (0);
 }

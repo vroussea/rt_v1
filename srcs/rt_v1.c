@@ -6,17 +6,20 @@
 /*   By: vroussea <vroussea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/16 10:40:43 by vroussea          #+#    #+#             */
-/*   Updated: 2016/11/22 11:41:33 by vroussea         ###   ########.fr       */
+/*   Updated: 2017/01/11 14:31:29 by vroussea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/rt_v1.h"
 #include <mlx.h>
 
-void		caller(t_env *env, char *str, int size_l, t_scene scene)
+void		caller(t_env *env, char *meml, int size_l, t_scene scene)
 {
-	scene.pov.pos.x += 1 -1;
-	ft_bzero(str, size_l * SIZE_Y);
+	//int	*col;
+
+//	col = opencl(scene);
+	scene.pov.pos.x += 1 - 1;
+	ft_bzero(meml, size_l * SIZE_Y);
 	mlx_put_image_to_window(env->mlx, env->win, env->img, 1, 1);
 }
 
@@ -25,12 +28,12 @@ static void	init_val(t_env *env, t_scene scene)
 	int		bpp;
 	int		edan;
 	int		size_l;
-	char	*str;
+	char	*meml;
 
-	str = mlx_get_data_addr(env->img, &bpp, &size_l, &edan);
+	meml = mlx_get_data_addr(env->img, &bpp, &size_l, &edan);
 	mlx_hook(env->win, 2, 0, key_funct, env);
 	mlx_hook(env->win, 17, 0, quit_funct, env);
-	caller(env, str, size_l, scene);
+	caller(env, meml, size_l, scene);
 	mlx_loop(env->mlx);
 }
 
