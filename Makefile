@@ -6,7 +6,7 @@
 #    By: vroussea <vroussea@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/11/24 09:55:27 by vroussea          #+#    #+#              #
-#    Updated: 2016/11/26 12:05:39 by vroussea         ###   ########.fr        #
+#    Updated: 2017/01/12 14:50:19 by vroussea         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -45,10 +45,12 @@ INC_DIR =	includes
 # libs
 LIBMLX =	-L/usr/local/lib -lmlx -lm -framework OpenGL -framework AppKit
 LIBFT =		libft/libft.a
+LIBOCL =	-framework opencl
 MAKELIBFT =	make -C libft/
 
 # sources
-SRC_NAME =	rt_v1.c event.c tools.c get_struct.c
+SRC_NAME =	rt_v1.c event.c tools.c get_struct.c quad_collide.c raytracer.c    \
+			rotations.c
 SRC2_NAME =	scmk.c fill_struct.c obj_types.c tools_scene.c
 
 # objects
@@ -64,7 +66,7 @@ INC =		$(addprefix -I, $(INC_DIR))
 
 all :		$(EXE) $(EXE2)
 $(EXE) :	$(SRC) $(OBJ) $(LIBFT)
-		@$(CC) $(LIBMLX) $(LIBFT) $(OBJ) -o $@
+		@$(CC) $(LIBOCL) $(LIBMLX) $(LIBFT) $(OBJ) -o $@
 		@echo "$(CLEAR)$(LIG)$(BLUE)  Compiling "$(EXE)" $(CLEAR)$(LIG)"
 $(EXE2) :	$(SRC2) $(OBJ2) $(LIBFT)
 		@$(CC) $(LIBMLX) $(LIBFT) $(OBJ2) -o $@

@@ -6,20 +6,18 @@
 /*   By: vroussea <vroussea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/16 10:40:43 by vroussea          #+#    #+#             */
-/*   Updated: 2017/01/11 14:31:29 by vroussea         ###   ########.fr       */
+/*   Updated: 2017/01/12 14:48:21 by vroussea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/rt_v1.h"
 #include <mlx.h>
 
-void		caller(t_env *env, char *meml, int size_l, t_scene scene)
+void		caller(t_env *env, char *meml, t_scene scene)
 {
-	//int	*col;
 
-//	col = opencl(scene);
-	scene.pov.pos.x += 1 - 1;
-	ft_bzero(meml, size_l * SIZE_Y);
+	ft_bzero(meml, SIZE_X * 4 * SIZE_Y);
+	pixel_browser(scene, meml);
 	mlx_put_image_to_window(env->mlx, env->win, env->img, 1, 1);
 }
 
@@ -33,7 +31,7 @@ static void	init_val(t_env *env, t_scene scene)
 	meml = mlx_get_data_addr(env->img, &bpp, &size_l, &edan);
 	mlx_hook(env->win, 2, 0, key_funct, env);
 	mlx_hook(env->win, 17, 0, quit_funct, env);
-	caller(env, meml, size_l, scene);
+	caller(env, meml, scene);
 	mlx_loop(env->mlx);
 }
 

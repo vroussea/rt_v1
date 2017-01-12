@@ -6,11 +6,12 @@
 /*   By: vroussea <vroussea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/11 18:10:29 by vroussea          #+#    #+#             */
-/*   Updated: 2017/01/11 18:46:29 by vroussea         ###   ########.fr       */
+/*   Updated: 2017/01/12 15:43:30 by vroussea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "..includes.rt_v1.h"
+#include "../includes/rt_v1.h"
+#include <math.h>
 
 double	collide_sphere(t_obj ray, t_obj quad)
 {
@@ -19,18 +20,19 @@ double	collide_sphere(t_obj ray, t_obj quad)
 	double		c;
 	double		d;
 
-	a = ft_pow(ray.DX, 2) + ft_pow(ray.DY, 2) + ft_pow(ray.DZ, 2);
+	a = ray.DX * ray.DX + ray.DY * ray.DY + ray.DZ * ray.DZ;
 	b = 2 * ray.DX * (ray.PX - quad.PX) +
 		2 * ray.DY * (ray.PY - quad.PY) +
 		2 * ray.DZ * (ray.PZ - quad.PZ);
-	c = ft_pow(quad.PX, 2) + ft_pow(quad.PY, 2) + ft_pow(quad.PZ, 2) +
-		ft_pow(ray.PX, 2) + ft_pow(ray.PY, 2) + ft_pow(ray.PZ, 2) -
+	c = quad.PX * quad.PX + quad.PY * quad.PY + quad.PZ * quad.PZ +
+		ray.PX * ray.PX + ray.PY * ray.PY + ray.PZ * ray.PZ -
 		2 * (quad.PX * ray.PX + quad.PY * ray.PY + quad.PZ * ray.PZ )
-		- ft_pow(quad.size, 2);
+		- quad.size * quad.size;
 	d = b * b - 4 * a * c;
 	if (d < 0)
 		return (-1);
-	c = (- b - sqrt(d)) / (2 * a);
-	d = (- b + sqrt(d)) / (2 * a);
-	return (c < d ? c : d);
+	d = (- b - sqrt(d)) / (2 * a);
+	//if (d > c)
+	//	ft_putendl("mdr2");
+	return (d);
 }
