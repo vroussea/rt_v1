@@ -6,7 +6,7 @@
 /*   By: vroussea <vroussea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/16 10:41:47 by vroussea          #+#    #+#             */
-/*   Updated: 2016/12/16 15:48:23 by vroussea         ###   ########.fr       */
+/*   Updated: 2017/01/20 15:08:36 by vroussea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,9 +69,9 @@ int			catch_col(char *str)
 	return (val);
 }
 
-t_vector3d	dir(void)
+t_vect3d	dir(void)
 {
-	t_vector3d	dir;
+	t_vect3d	dir;
 
 	dir.x = 0;
 	dir.y = 0;

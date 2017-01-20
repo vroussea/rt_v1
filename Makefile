@@ -6,7 +6,7 @@
 #    By: vroussea <vroussea@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/11/24 09:55:27 by vroussea          #+#    #+#              #
-#    Updated: 2017/01/12 14:50:19 by vroussea         ###   ########.fr        #
+#    Updated: 2017/01/20 15:15:23 by vroussea         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -45,12 +45,12 @@ INC_DIR =	includes
 # libs
 LIBMLX =	-L/usr/local/lib -lmlx -lm -framework OpenGL -framework AppKit
 LIBFT =		libft/libft.a
-LIBOCL =	-framework opencl
+LIBVECT3D =	libvect3d/libvect3d.a
 MAKELIBFT =	make -C libft/
+MAKELIBVECT3D =	make -C libvect3d/
 
 # sources
-SRC_NAME =	rt_v1.c event.c tools.c get_struct.c quad_collide.c raytracer.c    \
-			rotations.c
+SRC_NAME =	rt_v1.c event.c tools.c get_struct.c quad_collide.c raytracer.c
 SRC2_NAME =	scmk.c fill_struct.c obj_types.c tools_scene.c
 
 # objects
@@ -65,14 +65,16 @@ OBJ2 =		$(addprefix $(OBJ_DIR)/, $(OBJ2_NAME))
 INC =		$(addprefix -I, $(INC_DIR))
 
 all :		$(EXE) $(EXE2)
-$(EXE) :	$(SRC) $(OBJ) $(LIBFT)
-		@$(CC) $(LIBOCL) $(LIBMLX) $(LIBFT) $(OBJ) -o $@
+$(EXE) :	$(SRC) $(OBJ) $(LIBFT) $(LIBVECT3D)
+		@$(CC) $(LIBMLX) $(LIBFT) $(LIBVECT3D) $(OBJ) -o $@
 		@echo "$(CLEAR)$(LIG)$(BLUE)  Compiling "$(EXE)" $(CLEAR)$(LIG)"
-$(EXE2) :	$(SRC2) $(OBJ2) $(LIBFT)
-		@$(CC) $(LIBMLX) $(LIBFT) $(OBJ2) -o $@
+$(EXE2) :	$(SRC2) $(OBJ2) $(LIBFT) $(LIBVECT3D)
+		@$(CC) $(LIBMLX) $(LIBFT) $(LIBVECT3D) $(OBJ2) -o $@
 		@echo "$(CLEAR)$(LIG)$(BLUE)  Compiling "$(EXE2)" $(CLEAR)$(LIG)"
 $(LIBFT) :
 		@$(MAKELIBFT) all
+$(LIBVECT3D) :
+		@$(MAKELIBVECT3D) all
 $(OBJ_DIR)/%.o: $(SRC_DIR)/%.c
 		@mkdir -p $(OBJ_DIR) 2> /dev/null || true
 		@$(CC) $(CFLAGS) $(INC) -o $@ -c $<

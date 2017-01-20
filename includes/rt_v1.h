@@ -6,7 +6,7 @@
 /*   By: vroussea <vroussea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/06 14:36:29 by vroussea          #+#    #+#             */
-/*   Updated: 2017/01/12 16:31:45 by vroussea         ###   ########.fr       */
+/*   Updated: 2017/01/20 15:15:33 by vroussea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,7 @@
 # define RT_V1_H
 
 # include "../libft/includes/libft.h"
-
-# ifdef __APPLE__
-#  include <OpenCL/opencl.h>
-# else
-#  include <cl.h>
-# endif
+# include "../libvect3d/includes/libvect3d.h"
 
 # define SIZE_X 1000
 # define SIZE_Y 1000
@@ -28,26 +23,26 @@
 # define SPOT scene.spots
 # define QUAD scene.quads
 # define PI 3.14159265358979323846
-# define SOURCE_SIZE 0x100000
+
 # define SPHERE 0
 # define CONE 1
 # define CYLINDRE 2
 # define PLANE 3
+
 # define DX dir.x
 # define DY dir.y
 # define DZ dir.z
 # define PX pos.x
 # define PY pos.y
 # define PZ pos.z
-# define ANG 500
 
 # pragma pack(1)
 
 typedef	struct	s_obj
 {
 	int			type;
-	t_vector3d	pos;
-	t_vector3d	dir;
+	t_vect3d	pos;
+	t_vect3d	dir;
 	double		size;
 	int			col;
 }				t_obj;
@@ -75,8 +70,6 @@ int			quit_funct(t_env *env);
 int			key_funct(int keycode, t_env *env);
 int			*opencl(t_scene scene);
 void		*error_msg(char *str);
-t_vector3d	rotate_y(t_vector3d dir, double ang);
-t_vector3d	rotate_z(t_vector3d dir, double ang);
 double		collide_sphere(t_obj ray, t_obj quad);
 void		pixel_browser(t_scene scene, char *meml);
 void		pixel(int x, int y, int col, char *meml);

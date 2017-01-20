@@ -6,7 +6,7 @@
 /*   By: vroussea <vroussea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/10 11:22:55 by vroussea          #+#    #+#             */
-/*   Updated: 2017/01/11 14:35:57 by vroussea         ###   ########.fr       */
+/*   Updated: 2017/01/12 11:20:53 by vroussea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ static int	*enqueue_tasks(cl_command_queue queue, cl_kernel kern,
 	return (col);
 }
 
-static int	*init_values(cl_context ctxt, cl_device_id dvic, cl_program prog
+static int	*init_values(cl_context ctxt, cl_device_id dvic, cl_program prog,
 		t_scene scene)
 {
 	cl_command_queue	queue;
@@ -50,10 +50,9 @@ static int	*init_values(cl_context ctxt, cl_device_id dvic, cl_program prog
 					sizeof(int) * SIZE_X * SIZE_Y, (void *)&col)) ||
 			!(mem_scene = create_buffer(ctxt, queue, sizeof(scene),
 					(void *)&scene)) ||
-			set_args(meme_col, mem_scene, kernel) ||
+			set_args(mem_col, mem_scene, kernel) ||
 			!(col = enqueue_tasks(queue, kernel, scene, mem_col)))
 		return (NULL);
-	ft_memdel((void **)&col);
 	return (col);
 }
 
@@ -68,7 +67,7 @@ int		*opencl(t_scene scene)
 	if (!(src = load_source_code()) ||
 			!(ctxt = get_context(&dvic)) ||
 			!(prog = build_program(src, ctxt, dvic)) ||
-			init_values(ctxt, dvic, prog, scene))
+			!(col = init_values(ctxt, dvic, prog, scene)))
 		return (error_msg("Program abort"));
 	return (col);
 }

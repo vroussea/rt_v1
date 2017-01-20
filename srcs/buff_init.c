@@ -6,13 +6,13 @@
 /*   By: vroussea <vroussea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/01 17:28:32 by vroussea          #+#    #+#             */
-/*   Updated: 2017/01/10 15:26:51 by vroussea         ###   ########.fr       */
+/*   Updated: 2017/01/12 11:14:15 by vroussea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/openclproject.h"
+#include "../includes/rt_v1.h"
 
-static int		write_buffer(cl_command_queue queue,
+int		write_buffer(cl_command_queue queue,
 		cl_mem buffer, void *ptr, size_t size)
 {
 	cl_int	errcode;
@@ -24,7 +24,7 @@ static int		write_buffer(cl_command_queue queue,
 	return (0);
 }
 
-static cl_mem	create_buffer(cl_context context, cl_command_queue queue,
+cl_mem	create_buffer(cl_context context, cl_command_queue queue,
 		size_t size, void *ptr)
 {
 	cl_mem	buffer;

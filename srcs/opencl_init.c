@@ -6,11 +6,11 @@
 /*   By: vroussea <vroussea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/02 17:52:40 by vroussea          #+#    #+#             */
-/*   Updated: 2017/01/11 17:37:44 by vroussea         ###   ########.fr       */
+/*   Updated: 2017/01/12 11:33:22 by vroussea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/openclproject.h"
+#include "../includes/rt_v1.h"
 #include <fcntl.h>
 #include <unistd.h>
 #include <stdlib.h>
@@ -66,7 +66,8 @@ cl_program			build_program(char *src, cl_context ctxt, cl_device_id dvic)
 			NULL, &err_code);
 	if (err_code != CL_SUCCESS)
 		return (error_msg("Error while creating program with source"));
-	err_code = clBuildProgram(prog, 1, &dvic, "-I./../includes", NULL, NULL);
+	err_code = clBuildProgram(prog, 1, &dvic,
+			"-I /Users/vroussea/travail/rt_v1/github/includes", NULL, NULL);
 	if (err_code != CL_SUCCESS)
 	{
 		clGetProgramBuildInfo(prog, dvic, CL_PROGRAM_BUILD_LOG, 0, NULL, &size);
