@@ -6,7 +6,7 @@
 /*   By: vroussea <vroussea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/11 18:10:29 by vroussea          #+#    #+#             */
-/*   Updated: 2017/01/12 15:43:30 by vroussea         ###   ########.fr       */
+/*   Updated: 2017/01/24 11:27:16 by vroussea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,8 +31,12 @@ double	collide_sphere(t_obj ray, t_obj quad)
 	d = b * b - 4 * a * c;
 	if (d < 0)
 		return (-1);
-	d = (- b - sqrt(d)) / (2 * a);
-	//if (d > c)
-	//	ft_putendl("mdr2");
-	return (d);
+	return ((- b - sqrt(d)) / (2 * a));
+}
+
+double	collide_plan(t_obj ray, t_obj quad)
+{
+	return ((quad.DX * (quad.PX - ray.PX) + quad.DY * (quad.PY - ray.PY) + 
+			quad.DZ * (quad.PZ - ray.PZ)) /
+			vect3d_scal_prod(quad.dir, ray.dir));
 }

@@ -6,7 +6,7 @@
 #    By: vroussea <vroussea@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/11/24 09:55:27 by vroussea          #+#    #+#              #
-#    Updated: 2017/01/20 15:15:23 by vroussea         ###   ########.fr        #
+#    Updated: 2017/01/24 11:49:20 by vroussea         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -94,6 +94,7 @@ clean :
 fclean :	clean
 		@echo "$(CLEAR)$(TRA)$(RED)  Removing Binary $(CLEAR)$(TRA)"
 		@$(MAKELIBFT) fclean
+		@$(MAKELIBVECT3D) fclean
 		@$(RM) $(EXE) $(EXE2)
 re :		fclean all
 .PHONY :	all, clean, fclean, re

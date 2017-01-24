@@ -6,7 +6,7 @@
 /*   By: vroussea <vroussea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/06 14:36:29 by vroussea          #+#    #+#             */
-/*   Updated: 2017/01/20 15:15:33 by vroussea         ###   ########.fr       */
+/*   Updated: 2017/01/24 11:33:36 by vroussea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,9 +25,9 @@
 # define PI 3.14159265358979323846
 
 # define SPHERE 0
-# define CONE 1
-# define CYLINDRE 2
-# define PLANE 3
+# define PLANE 1
+# define CONE 2
+# define CYLINDRE 3
 
 # define DX dir.x
 # define DY dir.y
@@ -63,6 +63,8 @@ typedef	struct	s_env
 	void	*img;
 }				t_env;
 
+typedef double	(*t_functs)(t_obj, t_obj);
+
 int			add_node(void *node, t_env *env);
 t_scene		get_struct(char *file);
 void		caller(t_env *env, char *str, t_scene scene);
@@ -71,7 +73,9 @@ int			key_funct(int keycode, t_env *env);
 int			*opencl(t_scene scene);
 void		*error_msg(char *str);
 double		collide_sphere(t_obj ray, t_obj quad);
+double		collide_plan(t_obj ray, t_obj quad);
 void		pixel_browser(t_scene scene, char *meml);
 void		pixel(int x, int y, int col, char *meml);
+void		fill_quad_functs_tab(t_functs **functs);
 
 #endif
