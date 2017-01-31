@@ -6,7 +6,7 @@
 /*   By: vroussea <vroussea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/06 14:36:29 by vroussea          #+#    #+#             */
-/*   Updated: 2017/01/24 11:33:36 by vroussea         ###   ########.fr       */
+/*   Updated: 2017/01/31 16:18:24 by vroussea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,9 @@
 
 # define SIZE_X 1000
 # define SIZE_Y 1000
+# define GRID_DIST 1.0
+# define GRID_HEIGHT 0.5
+# define GRID_WIDTH 0.5
 # define SCENE_VER 1.06
 # define CAM scene.pov
 # define SPOT scene.spots

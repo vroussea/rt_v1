@@ -6,7 +6,7 @@
 #    By: vroussea <vroussea@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/11/24 09:55:27 by vroussea          #+#    #+#              #
-#    Updated: 2017/01/24 11:49:20 by vroussea         ###   ########.fr        #
+#    Updated: 2017/01/27 13:45:20 by vroussea         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -51,7 +51,8 @@ MAKELIBVECT3D =	make -C libvect3d/
 
 # sources
 SRC_NAME =	rt_v1.c event.c tools.c get_struct.c quad_collide.c raytracer.c
-SRC2_NAME =	scmk.c fill_struct.c obj_types.c tools_scene.c
+SRC2_NAME =	scmk.c fill_struct.c obj_types.c tools_scene.c scene_displayer.c   \
+			scene_creator.c
 
 # objects
 OBJ_NAME =		$(SRC_NAME:.c=.o)
@@ -69,7 +70,7 @@ $(EXE) :	$(SRC) $(OBJ) $(LIBFT) $(LIBVECT3D)
 		@$(CC) $(LIBMLX) $(LIBFT) $(LIBVECT3D) $(OBJ) -o $@
 		@echo "$(CLEAR)$(LIG)$(BLUE)  Compiling "$(EXE)" $(CLEAR)$(LIG)"
 $(EXE2) :	$(SRC2) $(OBJ2) $(LIBFT) $(LIBVECT3D)
-		@$(CC) $(LIBMLX) $(LIBFT) $(LIBVECT3D) $(OBJ2) -o $@
+		@$(CC) $(LIBMLX) $(LIBFT) $(LIBVECT3D) $(OBJ2) objs/get_struct.o -o $@
 		@echo "$(CLEAR)$(LIG)$(BLUE)  Compiling "$(EXE2)" $(CLEAR)$(LIG)"
 $(LIBFT) :
 		@$(MAKELIBFT) all

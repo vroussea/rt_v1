@@ -6,7 +6,7 @@
 /*   By: vroussea <vroussea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/16 10:40:43 by vroussea          #+#    #+#             */
-/*   Updated: 2017/01/12 14:48:21 by vroussea         ###   ########.fr       */
+/*   Updated: 2017/01/31 18:53:45 by vroussea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,6 +57,7 @@ int			main(int argc, char **argv)
 	else
 	{
 		scene = get_struct(argv[1]);
+		CAM.dir = vect3d_unit(CAM.dir);
 		if (!(env->mlx = mlx_init()) ||
 			!(env->win = mlx_new_window(env->mlx, SIZE_X, SIZE_Y, "RT_V1")) ||
 			!(env->img = mlx_new_image(env->mlx, SIZE_X, SIZE_Y)))
