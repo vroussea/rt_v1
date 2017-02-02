@@ -6,7 +6,7 @@
 /*   By: vroussea <vroussea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/11 18:10:29 by vroussea          #+#    #+#             */
-/*   Updated: 2017/01/31 15:08:15 by vroussea         ###   ########.fr       */
+/*   Updated: 2017/02/02 15:57:22 by vroussea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ double	collide_sphere(t_obj ray, t_obj quad)
 	if (d < 0)
 		return (-1);
 	c = (-b - sqrt(d)) / (2 * a);
-	d = (-b - sqrt(d)) / (2 * a);
+	d = (-b + sqrt(d)) / (2 * a);
 	return (c < d ? c : d);
 }
 

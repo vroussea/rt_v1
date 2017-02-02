@@ -6,7 +6,7 @@
 #    By: vroussea <vroussea@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/11/24 09:55:27 by vroussea          #+#    #+#              #
-#    Updated: 2017/01/27 13:45:20 by vroussea         ###   ########.fr        #
+#    Updated: 2017/02/01 15:18:09 by vroussea         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -50,7 +50,8 @@ MAKELIBFT =	make -C libft/
 MAKELIBVECT3D =	make -C libvect3d/
 
 # sources
-SRC_NAME =	rt_v1.c event.c tools.c get_struct.c quad_collide.c raytracer.c
+SRC_NAME =	rt_v1.c event.c tools.c get_struct.c quad_collide.c raytracer.c    \
+			grid.c
 SRC2_NAME =	scmk.c fill_struct.c obj_types.c tools_scene.c scene_displayer.c   \
 			scene_creator.c
 
