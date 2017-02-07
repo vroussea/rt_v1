@@ -6,7 +6,7 @@
 /*   By: vroussea <vroussea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/06 14:36:29 by vroussea          #+#    #+#             */
-/*   Updated: 2017/02/02 14:04:13 by vroussea         ###   ########.fr       */
+/*   Updated: 2017/02/07 16:45:09 by vroussea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,8 +30,8 @@
 
 # define SPHERE 0
 # define PLANE 1
-# define CONE 2
-# define CYLINDRE 3
+# define CYLINDER 2
+# define CONE 3
 
 # define DX dir.x
 # define DY dir.y
@@ -74,7 +74,7 @@ typedef	struct	s_env
 	void	*img;
 }				t_env;
 
-typedef double	(*t_functs)(t_obj, t_obj);
+typedef double	(*t_functs)(t_obj, t_obj, t_scene);
 
 int			add_node(void *node, t_env *env);
 t_scene		get_struct(char *file);
@@ -83,11 +83,14 @@ int			quit_funct(t_env *env);
 int			key_funct(int keycode, t_env *env);
 int			*opencl(t_scene scene);
 void		*error_msg(char *str);
-double		collide_sphere(t_obj ray, t_obj quad);
-double		collide_plan(t_obj ray, t_obj quad);
+double		collide_sphere(t_obj ray, t_obj quad, t_scene scene);
+double		collide_plan(t_obj ray, t_obj quad, t_scene scene);
+double		collide_cylinder(t_obj ray, t_obj quad, t_scene scene);
+double		collide_cone(t_obj ray, t_obj quad, t_scene scene);
 void		pixel_browser(t_scene scene, char *meml);
 void		pixel(int x, int y, int col, char *meml);
 void		fill_quad_functs_tab(t_functs **functs);
 t_scene		grid_left_up_corner(t_scene scene);
+int			light(t_obj ray, double dist, t_scene scene, t_functs *functs);
 
 #endif

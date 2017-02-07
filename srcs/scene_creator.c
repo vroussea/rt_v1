@@ -6,7 +6,7 @@
 /*   By: vroussea <vroussea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/24 12:52:42 by vroussea          #+#    #+#             */
-/*   Updated: 2017/01/27 13:41:38 by vroussea         ###   ########.fr       */
+/*   Updated: 2017/02/07 11:54:34 by vroussea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,9 +40,10 @@ static int		select_obj(void)
 	int		val;
 
 	val = -1;
-	while (val < 0 || val > 1)
+	while (val < SPHERE || val > CONE)
 	{
-		ft_putendl("Enter object type number : Sphere (0), Plane(1)");
+		ft_putstr("Enter object type number : Sphere (0), Plane(1)");
+		ft_putendl(", Cylinder(2), Cone(3)");
 		if (get_next_line(0, &line) == -1)
 		{
 			ft_putendl("error with gnl while creating struct");

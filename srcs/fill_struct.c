@@ -6,7 +6,7 @@
 /*   By: vroussea <vroussea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/15 11:26:19 by vroussea          #+#    #+#             */
-/*   Updated: 2017/01/11 17:45:06 by vroussea         ###   ########.fr       */
+/*   Updated: 2017/02/07 11:52:29 by vroussea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,9 +43,9 @@ t_obj			create_obj(int val)
 	obj.dir.x = 0;
 	obj.dir.y = 0;
 	obj.dir.z = 0;
-	if (val == PLANE)
+	if (val == PLANE || val == CYLINDER || val == CONE)
 		plane_type(&obj);
-	if (val == SPHERE)
+	if (val == SPHERE || val == CYLINDER)
 		sphere_type(&obj);
 	col = (unsigned char *)&(obj.col);
 	ft_putendl("Choose object color :");

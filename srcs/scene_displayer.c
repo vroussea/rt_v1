@@ -6,7 +6,7 @@
 /*   By: vroussea <vroussea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/24 13:06:25 by vroussea          #+#    #+#             */
-/*   Updated: 2017/01/27 15:06:38 by vroussea         ###   ########.fr       */
+/*   Updated: 2017/02/06 14:40:42 by vroussea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,8 +44,8 @@ static void		show_name(t_obj quad)
 		ft_putendl("Plane Type");
 	if (quad.type == CONE)
 		ft_putendl("CONE Type");
-	if (quad.type == CYLINDRE)
-		ft_putendl("CYLINDRE Type");
+	if (quad.type == CYLINDER)
+		ft_putendl("CYLINDER Type");
 }
 
 static void		show_quads(t_scene scene)
