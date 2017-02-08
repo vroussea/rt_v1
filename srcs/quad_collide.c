@@ -6,7 +6,7 @@
 /*   By: vroussea <vroussea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/11 18:10:29 by vroussea          #+#    #+#             */
-/*   Updated: 2017/02/07 16:01:13 by vroussea         ###   ########.fr       */
+/*   Updated: 2017/02/08 19:29:09 by vroussea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,9 +20,14 @@ static t_obj	mod_cam(t_obj ray, t_obj quad, t_scene scene)
 	t_vect3d	dir_z;
 
 	dir_z = vect3d_fill(0.0, 0.0, 1.0);
+//	printf("ray pos avant rot : \nx : %f\ny : %f\nz : %f\n", ray.PX, ray.PY, ray.PZ);
+//	printf("ray dir avant rot : \nx : %f\ny : %f\nz : %f\n", ray.DX, ray.DY, ray.DZ);
 	ray.pos = vect3d_sub(ray.pos, quad.pos);
 	ang = vect3d_ang(quad.dir, dir_z);
 	ray.dir = vect3d_rot(vect3d_unit(CAM.dir), ray.dir, ang);
+	ray.pos = vect3d_rot(vect3d_unit(CAM.dir), ray.pos, ang);
+//	printf("ray pos apres rot : \nx : %f\ny : %f\nz : %f\n", ray.PX, ray.PY, ray.PZ);
+//	printf("ray dir apres rot : \nx : %f\ny : %f\nz : %f\n", ray.DX, ray.DY, ray.DZ);
 	return (ray);
 }
 
@@ -46,7 +51,8 @@ double	collide_sphere(t_obj ray, t_obj quad, t_scene scene)
 		return (-1);
 	c = (-b - sqrt(d)) / (2 * a);
 	d = (-b + sqrt(d)) / (2 * a);
-	return (c < d ? c : d);
+//	printf("c : %f\nd : %f\n", c, d);
+	return (c > 0.00001 ? c : d);
 	CAM.DX++;
 }
 
@@ -77,7 +83,8 @@ double	collide_cylinder(t_obj ray, t_obj quad, t_scene scene)
 		return (-1);
 	c = (- b - sqrt(d)) / (2 * a);
 	d = (- b + sqrt(d)) / (2 * a);
-	return (c < d ? c : d);
+//	printf("c : %f\nd : %f\n", c, d);
+	return (c > 0.00001 ? c : d);
 	CAM.DX = CAM.DX + 1 - 1;
 }
 
@@ -99,5 +106,5 @@ double	collide_cone(t_obj ray, t_obj quad, t_scene scene)
 		return (-1);
 	c = (- b - sqrt(d)) / (2 * a);
 	d = (- b + sqrt(d)) / (2 * a);
-	return (c < d ? c : d);
+	return (c > 0.00001 ? c : d);
 }

@@ -6,7 +6,7 @@
 /*   By: vroussea <vroussea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/07 15:04:15 by vroussea          #+#    #+#             */
-/*   Updated: 2017/02/07 18:26:54 by vroussea         ###   ########.fr       */
+/*   Updated: 2017/02/08 19:23:09 by vroussea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,8 +50,8 @@ int			light(t_obj ray, double dist, t_scene scene, t_functs *functs)
 	tmp_dist = 0xffffffff;
 	while (crt_l < scene.nb_spot)
 	{
-		ray.dir = vect3d_unit(vect3d_sub(SPOT[crt_l].pos, ray.pos));
-		dist = sqrt(vect3d_scal_prod(SPOT[crt_l].pos, ray.pos));
+		ray.dir = vect3d_sub(SPOT[crt_l].pos, ray.pos);
+		dist = vect3d_dist(ray.pos, SPOT[crt_l].pos);
 //		printf("ray dir :\nx : %f\ny : %f\nz : %f\n", ray.DX, ray.DY, ray.DZ);
 //		printf("dist impact - lumiere: %f\n", dist);
 //		printf("light N%i :\nx : %f\ny : %f\nz : %f\n", crt_l, SPOT[crt_l].PX, SPOT[crt_l].PY, SPOT[crt_l].PZ);
@@ -60,8 +60,11 @@ int			light(t_obj ray, double dist, t_scene scene, t_functs *functs)
 		{
 			tmp_dist = functs[QUAD[crt_q].type](ray, QUAD[crt_q], scene);
 //			printf("dist to next quad : %f\n", tmp_dist);
-			if (tmp_dist > 0.001 && tmp_dist < dist)
-					return (1);
+			if (tmp_dist > 0.0001 && tmp_dist < 0.9999)
+			{
+//				printf("quad :%d\n", crt_q);
+				return (1);
+			}
 			crt_q++;
 		}
 		//if (is_collide(ray, SPOT[crt], dist, functs))

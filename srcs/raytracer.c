@@ -6,7 +6,7 @@
 /*   By: vroussea <vroussea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/11 16:34:02 by vroussea          #+#    #+#             */
-/*   Updated: 2017/02/07 18:19:04 by vroussea         ###   ########.fr       */
+/*   Updated: 2017/02/08 19:22:56 by vroussea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,9 @@ static int	which_quad(t_obj ray, t_scene scene, t_functs *functs)
 		if (tmp_dist > 0 && tmp_dist < dist)
 		{
 			dist = tmp_dist;
+			//col = QUAD[crt].col;
 			col = (light(ray, dist, scene, functs) ? 0 : QUAD[crt].col);
+		//	printf("col : 0x%X\n", col);
 		}
 		crt++;
 	}
@@ -67,6 +69,7 @@ void			pixel_browser(t_scene scene, char *meml)
 		}
 		x++;
 	}
-//	pixel((int)SIZE_X / 2, (int)SIZE_Y / 2, rotate_ray((double)SIZE_X / 2, (double)SIZE_Y / 2, scene, functs), meml);
+	//pixel((int)440, (int)250, rotate_ray((double)440, (double)200, scene, functs), meml);
+	//pixel((int)SIZE_X / 2, (int)SIZE_Y / 2, rotate_ray((double)SIZE_X / 2, (double)SIZE_Y / 2, scene, functs), meml);
 	ft_memdel((void **)&functs);
 }
