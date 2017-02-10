@@ -6,36 +6,37 @@
 /*   By: vroussea <vroussea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/11 16:34:02 by vroussea          #+#    #+#             */
-/*   Updated: 2017/02/08 19:22:56 by vroussea         ###   ########.fr       */
+/*   Updated: 2017/02/10 17:49:51 by vroussea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/rt_v1.h"
-#include <stdio.h>/////
 
 static int	which_quad(t_obj ray, t_scene scene, t_functs *functs)
 {
-	int			crt;
+	int			closer;
+	int			tmp_crt;
 	int			col;
 	double		dist;
 	double		tmp_dist;
 
-	crt = 0;
+	closer = -1;
+	tmp_crt = 0;
 	col = 0;
 	dist = 0x76FFFFFF;
 	tmp_dist = dist;
-	while (crt < scene.nb_quad)
+	while (tmp_crt < scene.nb_quad)
 	{
-		tmp_dist = functs[QUAD[crt].type](ray, QUAD[crt], scene);
+		tmp_dist = functs[QUAD[tmp_crt].type](ray, QUAD[tmp_crt], scene);
 		if (tmp_dist > 0 && tmp_dist < dist)
 		{
+			closer = tmp_crt;
 			dist = tmp_dist;
-			//col = QUAD[crt].col;
-			col = (light(ray, dist, scene, functs) ? 0 : QUAD[crt].col);
-		//	printf("col : 0x%X\n", col);
 		}
-		crt++;
+		tmp_crt++;
 	}
+	if (closer != -1)
+		col = col_grad(QUAD[closer].col, slct_light(ray, dist, scene, functs));
 	return (col);
 }
 
@@ -69,7 +70,7 @@ void			pixel_browser(t_scene scene, char *meml)
 		}
 		x++;
 	}
-	//pixel((int)440, (int)250, rotate_ray((double)440, (double)200, scene, functs), meml);
+	//pixel((int)300, (int)200, rotate_ray((double)300, (double)200, scene, functs), meml);
 	//pixel((int)SIZE_X / 2, (int)SIZE_Y / 2, rotate_ray((double)SIZE_X / 2, (double)SIZE_Y / 2, scene, functs), meml);
 	ft_memdel((void **)&functs);
 }

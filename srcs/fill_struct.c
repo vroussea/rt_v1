@@ -6,7 +6,7 @@
 /*   By: vroussea <vroussea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/15 11:26:19 by vroussea          #+#    #+#             */
-/*   Updated: 2017/02/07 11:52:29 by vroussea         ###   ########.fr       */
+/*   Updated: 2017/02/09 17:00:41 by vroussea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ t_obj			create_obj(int val)
 	col[2] = (unsigned char)catch_col("red value : ");
 	col[1] = (unsigned char)catch_col("green value : ");
 	col[0] = (unsigned char)catch_col("blue value : ");
-	col[4] = 0;
+	col[3] = 0;
 	return (obj);
 }
 
