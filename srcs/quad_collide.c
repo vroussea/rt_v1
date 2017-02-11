@@ -6,7 +6,7 @@
 /*   By: vroussea <vroussea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/11 18:10:29 by vroussea          #+#    #+#             */
-/*   Updated: 2017/02/08 19:29:09 by vroussea         ###   ########.fr       */
+/*   Updated: 2017/02/11 18:12:28 by vroussea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ static t_obj	mod_cam(t_obj ray, t_obj quad, t_scene scene)
 	dir_z = vect3d_fill(0.0, 0.0, 1.0);
 //	printf("ray pos avant rot : \nx : %f\ny : %f\nz : %f\n", ray.PX, ray.PY, ray.PZ);
 //	printf("ray dir avant rot : \nx : %f\ny : %f\nz : %f\n", ray.DX, ray.DY, ray.DZ);
-	ray.pos = vect3d_sub(ray.pos, quad.pos);
+//	ray.pos = vect3d_sub(ray.pos, quad.pos);
 	ang = vect3d_ang(quad.dir, dir_z);
 	ray.dir = vect3d_rot(vect3d_unit(CAM.dir), ray.dir, ang);
 	ray.pos = vect3d_rot(vect3d_unit(CAM.dir), ray.pos, ang);
@@ -96,11 +96,12 @@ double	collide_cone(t_obj ray, t_obj quad, t_scene scene)
 	double	d;
 
 	ray = mod_cam(ray, quad, scene);
-	a = ray.DX * ray.DX + ray.DY * ray.DY - ray.DZ * ray.DZ;
+	a = ray.DX * ray.DX + ray.DY * ray.DY - ray.DZ * ray.DZ
+		* tan(quad.size * RAD);
 	b = 2 * ray.DX * ray.PX + 2 * ray.DY * ray.PY -
-		2 * ray.DZ * ray.PZ;
+		2 * ray.DZ * ray.PZ * tan(quad.size * RAD);
 	c = ray.PX * ray.PX + ray.PY * ray.PY -
-		ray.PZ * ray.PZ;
+		ray.PZ * ray.PZ * tan(quad.size * RAD);
 	d = b * b - 4 * a * c;
 	if (d < 0)
 		return (-1);

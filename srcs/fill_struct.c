@@ -6,7 +6,7 @@
 /*   By: vroussea <vroussea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/15 11:26:19 by vroussea          #+#    #+#             */
-/*   Updated: 2017/02/09 17:00:41 by vroussea         ###   ########.fr       */
+/*   Updated: 2017/02/11 12:22:25 by vroussea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ t_obj			create_obj(int val)
 	obj.dir.z = 0;
 	if (val == PLANE || val == CYLINDER || val == CONE)
 		plane_type(&obj);
-	if (val == SPHERE || val == CYLINDER)
+	if (val == SPHERE || val == CYLINDER || val == CONE)
 		sphere_type(&obj);
 	col = (unsigned char *)&(obj.col);
 	ft_putendl("Choose object color :");
@@ -67,7 +67,5 @@ t_obj			create_spot(void)
 	spot.pos.x = catch_double("x : ");
 	spot.pos.y = catch_double("y : ");
 	spot.pos.z = catch_double("z : ");
-	ft_putendl("Enter x, y and z vector position");
-	spot.dir = dir();
 	return (spot);
 }

@@ -6,7 +6,7 @@
 /*   By: vroussea <vroussea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/11 16:34:02 by vroussea          #+#    #+#             */
-/*   Updated: 2017/02/10 17:49:51 by vroussea         ###   ########.fr       */
+/*   Updated: 2017/02/11 16:31:16 by vroussea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,8 @@ static int	which_quad(t_obj ray, t_scene scene, t_functs *functs)
 		tmp_crt++;
 	}
 	if (closer != -1)
-		col = col_grad(QUAD[closer].col, slct_light(ray, dist, scene, functs));
+		col = col_grad(
+				QUAD[closer].col, slct_light(ray, dist, scene, QUAD[closer]));
 	return (col);
 }
 
@@ -56,9 +57,12 @@ void			pixel_browser(t_scene scene, char *meml)
 {
 	double		x;
 	double		y;
-	t_functs	*functs;
+	t_functs	functs[4];
 
-	fill_quad_functs_tab(&functs);
+	functs[SPHERE] = collide_sphere;
+	functs[PLANE] = collide_plan;
+	functs[CYLINDER] = collide_cylinder;
+	functs[CONE] = collide_cone;
 	x = 0;
 	while (x < SIZE_X)
 	{
@@ -72,5 +76,4 @@ void			pixel_browser(t_scene scene, char *meml)
 	}
 	//pixel((int)300, (int)200, rotate_ray((double)300, (double)200, scene, functs), meml);
 	//pixel((int)SIZE_X / 2, (int)SIZE_Y / 2, rotate_ray((double)SIZE_X / 2, (double)SIZE_Y / 2, scene, functs), meml);
-	ft_memdel((void **)&functs);
 }
