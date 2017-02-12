@@ -6,7 +6,7 @@
 /*   By: vroussea <vroussea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/11 16:34:02 by vroussea          #+#    #+#             */
-/*   Updated: 2017/02/11 16:31:16 by vroussea         ###   ########.fr       */
+/*   Updated: 2017/02/12 17:50:57 by vroussea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,6 +74,11 @@ void			pixel_browser(t_scene scene, char *meml)
 		}
 		x++;
 	}
-	//pixel((int)300, (int)200, rotate_ray((double)300, (double)200, scene, functs), meml);
+//	pixel((int)399, (int)340, 0, meml);
+//	pixel((int)394, (int)349, 0, meml);
+//	pixel((int)390, (int)349, 0, meml);
+//	pixel((int)399, (int)340, rotate_ray((double)399, (double)340, scene, functs), meml);
+//	pixel((int)394, (int)349, rotate_ray((double)394, (double)349, scene, functs), meml);
+//	pixel((int)390, (int)349, rotate_ray((double)390, (double)349, scene, functs), meml);
 	//pixel((int)SIZE_X / 2, (int)SIZE_Y / 2, rotate_ray((double)SIZE_X / 2, (double)SIZE_Y / 2, scene, functs), meml);
 }

@@ -6,7 +6,7 @@
 /*   By: vroussea <vroussea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/06 14:36:29 by vroussea          #+#    #+#             */
-/*   Updated: 2017/02/11 17:56:42 by vroussea         ###   ########.fr       */
+/*   Updated: 2017/02/12 14:50:55 by vroussea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,5 +96,7 @@ int					slct_light(t_obj ray, double dist,
 int					col_grad(int col, int strength);
 t_vect3d			plane_normal(t_vect3d pos, t_obj plane);
 t_vect3d			sphere_normal(t_vect3d pos, t_obj plane);
+t_vect3d			cone_normal(t_vect3d pos, t_obj plane);
+t_vect3d			cylinder_normal(t_vect3d pos, t_obj plane);
 
 #endif
